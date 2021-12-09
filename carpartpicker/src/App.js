@@ -8,6 +8,7 @@ import config from "./config.js";
 import Nav from "./Nav";
 import login from "./pages/login"
 import profile from "./pages/profile" 
+import signup from "./pages/signup" 
 
 
 
@@ -104,6 +105,7 @@ class App extends React.Component {
         <Switch>
           <Route path ="/Login" component ={login}/>
           <Route path ="/Profile" component ={profile}/>
+          <Route path ="/Signup" component ={signup}/>
         </Switch>
 
 

@@ -56,6 +56,7 @@ class profile extends React.Component {
     let role = this.refs.role.value;
     let uid = this.refs.uid.value;
 
+
     if (uid && name && role) {
       const { developers } = this.state;
       const devIndex = developers.findIndex(data => {
@@ -137,7 +138,7 @@ class profile extends React.Component {
               <h1>Add new team member here</h1>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-row">
-                  <input type="hidden" ref="uid" />
+                  <input type="hidden"  ref="uid"/>
                   <div className="form-group col-md-6">
                     <label>Name</label>
                     <input
