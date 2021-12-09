@@ -4,14 +4,14 @@ Its like the PC part picker of cars
 Site
 
 - Basic User Accounts
-----Database input \ Handling ✅
-----Authentication 
-----Unique Profile
+1. Database input \ Handling ✅
+2. Authentication 
+3. Unique Profile
 
 - Aesthetic
-----Site Routing\Multipages ✅
-----Site Design 
+1. Site Routing\Multipages ✅
+2. Site Design 
 
 - Features
-----Vehicle Part Picker
-----Profile Vehicle Show (wtf does this actually mean)
+1. Vehicle Part Picker
+2. Profile Vehicle Show (wtf does this actually mean)
