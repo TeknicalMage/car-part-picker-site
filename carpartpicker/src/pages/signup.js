@@ -122,37 +122,7 @@ class Item extends Component {
                 </p>
             </form>
 
-        <div className="row">
-            <div className="col-xl-12">
-              {developers.map(developer => (
-                <div
-                  key={developer.uid}
-                  className="card float-left"
-                  style={{ width: "18rem", marginRight: "1rem" }}
-                >
-                  <div className="card-body">
-                    <h5 className="card-title">{developer.name}</h5>
-                    <p className="card-text">{developer.role}</p>
-                    <button
-                      onClick={() => this.removeData(developer)}
-                      className="btn btn-link"
-                    >
-                      Delete
-                    </button>
-                    <button
-                      onClick={() => this.updateData(developer)}
-                      className="btn btn-link"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        
-
-        </div>
+  </div>
 
         
 
