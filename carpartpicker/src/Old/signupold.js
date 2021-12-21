@@ -1,14 +1,52 @@
 import React, { Component } from "react";
 import * as ReactDOM from "react-dom";
-import profile from "./profile";
+import profile from "../profile";
 import Firebase from "firebase";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+
+
+//import App from "./app.js";
+// import { database, auth, googleAuthProvider, storage } from 'firebase';const auth = app.auth();
+ 
+//import {firebase} from "../firebase.js"
+
+
+//const auth = Firebase.auth(App);
+
+//const signUpFunction = (em, pa) => {
+ // const email = em;
+ // const password = pa;
+
+ // auth.createUserWithEmailAndPassword(email, password)
+ // .then(() => {
+  //    console.log("Signed Up Successfully");
+  //    window.location.assign('../Profile');
+ // })
+ // .catch(error => {
+   //     console.error(error);
+ // })
+//}
+
+//const sendVerificationEmail = () => {
+  //Built in firebase function responsible for sending the verification email
+//  auth.currentUser.sendEmailVerification()
+//  .then(() => {
+ //     console.log('Verification Email Sent Successfully !');
+      //redirecting the user to the profile page once everything is done correctly
+ //     window.location.assign('../Profile');
+ // })
+ // .catch(error => {
+ //     console.error(error);
+ // })
+//}
+
 
 
 class Item extends Component {
   constructor(props) {
     super(props);
     
-
     
     
 
@@ -75,6 +113,8 @@ class Item extends Component {
     this.refs.email.value = "";
     this.refs.password.value = "";
     this.refs.uid.value = "";
+
+    //signUpFunction(email, password);
   };
 
  
@@ -88,13 +128,16 @@ class Item extends Component {
   
 
 
-  render() {
+   
+          render() {
     const { developers } = this.state;
     return (
 
         <div>
+        <script src="/__/firebase/6.2.4/firebase-app.js"></script>
+        <script src="/__/firebase/6.2.4/firebase-auth.js"></script>
         <form onSubmit={this.handleSubmit}>
-                <h3>Register</h3>
+                <h3> </h3>
                 <input type="hidden"  ref="uid"/>
                 <div className="form-group">
                     <label>First name</label>
@@ -106,21 +149,26 @@ class Item extends Component {
                     <input type="text" className="form-control" placeholder="Last name" ref="lastname" />
                 </div>
 
-                <div className="form-group">
+              <div className="form-group">
                     <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Enter email" ref="email" />
+                    <input type="email"  id = "email" className="form-control" placeholder="Enter email" ref="email" />
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" ref="password"/>
+                    <input type="password" id = "password" className="form-control" placeholder="Enter password" ref="password"/>
                 </div>
 
-                <button type="submit" className="btn btn-dark btn-lg btn-block">Register</button>
+                <button type="submit" className="btn btn-dark btn-lg btn-block" ref = "id">Register</button>
                 <p className="forgot-password text-right">
-                    Already registered <a href="#">log in?</a>
+                    Already registered  <a href="#">log in?</a>
                 </p>
-            </form>
+        </form>
+        <script>
+          
+        
+        </script>
+
 
   </div>
 
@@ -129,10 +177,11 @@ class Item extends Component {
         
 
     );
-      <React.Fragment><profile></profile></React.Fragment>
+      
     
 }
 
 
 }
 export default Item;
+

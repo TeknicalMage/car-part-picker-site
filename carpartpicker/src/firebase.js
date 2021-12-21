@@ -1,4 +1,8 @@
-const config = {
+import firebase from "firebase/app";
+import "firebase/auth"
+
+
+const app = firebase.initializeApp({
   apiKey: "AIzaSyCyFrembMWoDROxlif6g-8XfXNicHf_1U0",
   authDomain: "carpartpicker-39d1c.firebaseapp.com",
   databaseURL: "https://carpartpicker-39d1c-default-rtdb.firebaseio.com",
@@ -7,6 +11,7 @@ const config = {
   messagingSenderId: "398437917333",
   appId: "1:398437917333:web:c06e3cfe2aa4bc6582319c",
   measurementId: "G-5635Y6JQ7W"
-  }
-  
-  export default config;
+  })
+
+export const auth = app.auth()
+export default app

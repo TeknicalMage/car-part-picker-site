@@ -5,6 +5,7 @@ import './Nav.css';
 
 function Nav() {
     return (
+      
       <nav>
         <ul className = "grid-container">
           <Link to='/Homepage' className="grid-item"  style={{ textDecoration: 'none' }}>
@@ -18,6 +19,9 @@ function Nav() {
           </Link>
           <Link to='/Signup' className="grid-item" style={{ textDecoration: 'none' }}>
           <li className="">Sign up</li>
+          </Link>
+          <Link to='/Account' className="grid-item" style={{ textDecoration: 'none' }}>
+          <li className="">Account</li>
           </Link>
         </ul>
       </nav>
