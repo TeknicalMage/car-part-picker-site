@@ -28,7 +28,7 @@ class App extends React.Component {
 
       <React.Fragment>
 
-        <AuthProvider>
+      <AuthProvider>
         <div className="w-100">
         <Container classname = "d-flex align-items-center justify-content-center" style={{minHeight: "100vh"}}>
           <Signup/>
@@ -38,7 +38,7 @@ class App extends React.Component {
 
 
         </div>
-        </AuthProvider>
+      </AuthProvider>
         
       </React.Fragment>
     );

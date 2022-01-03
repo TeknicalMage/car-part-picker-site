@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, NavLink, Link } from "react-router-dom";
 
 import Nav from "./Nav";
-import login from "./login"
+import Login from "./Login"
 import profile from "./profile"
 import Acc from "./AccPage"
 //Sign up Component
@@ -51,7 +51,7 @@ class App extends React.Component {
       <AuthProvider>
         <Switch>
           <Route exact path="/" component ={Dashboard}/>
-          <Route path ="/Login" component ={login}/>
+          <Route path ="/Login" component ={Login}/>
           <Route path ="/Profile" component ={profile}/>
           <Route path ="/Signup" component ={Acc}/>
           <Route path ="/Account" component ={profile}/>
