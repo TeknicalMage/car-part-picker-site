@@ -20,60 +20,78 @@ import UpdateProfile from "./UpdateProfile"
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-   
-
-    
-    
-
-
-    this.state = {
-      developers: []
-    };
-
-    
-  }
-
-
-
-  render() {
-    const { developers } = this.state;
-
-    return (
-
-      
-
-      
-      <React.Fragment>
-
-   
-
-        
-
-        <Router>
-        
-      <AuthProvider>
-        <Nav>
-        </Nav>
-        <Switch>
-          <Route path ="/Login" component ={Login}/>
-          <Route path ="/Profile" component ={Dashboard}/>
-          <Route path ="/Signup" component ={Acc}/>
-          <Route path ="/Account" component ={profile}/>
-          <Route path ="/update-profile" component ={UpdateProfile}/>
-        </Switch>
-      </AuthProvider>
-
-        </Router>
+    constructor(props) {
+        super(props);
 
 
 
 
-        
-      </React.Fragment>
-    );
-  }
+
+
+        this.state = {
+            developers: []
+        };
+
+
+    }
+
+
+
+    render() {
+        const { developers } = this.state;
+
+        return (
+
+
+
+
+            <
+            React.Fragment >
+
+
+
+
+
+            <
+            Router >
+
+            <
+            AuthProvider >
+            <
+            Nav >
+            <
+            /Nav> <
+            Switch >
+            <
+            Route path = "/Login"
+            component = { Login }
+            /> <
+            Route path = "/Profile"
+            component = { Dashboard }
+            /> <
+            Route path = "/Signup"
+            component = { Acc }
+            /> <
+            Route path = "/Account"
+            component = { profile }
+            /> <
+            Route path = "/update-profile"
+            component = { UpdateProfile }
+            /> < /
+            Switch > <
+            /AuthProvider>
+
+            <
+            /Router>
+
+
+
+
+
+            <
+            /React.Fragment>
+        );
+    }
 }
 
 export default App;
