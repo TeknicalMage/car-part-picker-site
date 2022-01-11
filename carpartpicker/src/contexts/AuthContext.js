@@ -14,9 +14,14 @@ export function AuthProvider({ children }) {
   function signup(email, password) {
      return auth.createUserWithEmailAndPassword(email, password)
     .then(()=>{
-          currentUser.sendEmailVerification();  
-          auth.signOut();    
-    }).catch(alert)
+        currentUser.sendEmailVerification();
+        console.log(currentUser)
+    }).catch((e) => {
+        console.log(e)
+        console.log(currentUser)
+    })
+    
+
   }
 
   function login(email, password) {
@@ -54,7 +59,11 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)
+      // console.log(user)
       setLoading(false)
+      // if (user && !user.emailVerified) {
+      //   console.log("inside of sendEmailVerification");
+      // }
     })
 
     return unsubscribe

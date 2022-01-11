@@ -1,6 +1,7 @@
 import React from "react";
 
-import { BrowserRouter as Router, Switch, Route, NavLink, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+import { Card, Button, Alert } from "react-bootstrap"
 
 import Nav from "./Nav";
 import Login from "./Login"
@@ -10,6 +11,7 @@ import Acc from "./AccPage"
 import Signup from "./signup";
 import { AuthProvider } from "./contexts/AuthContext";
 import Dashboard from "./Dashboard";
+import UpdateProfile from "./UpdateProfile"
 
 
 
@@ -29,16 +31,20 @@ class App extends React.Component {
     this.state = {
       developers: []
     };
+
+    
   }
 
 
 
   render() {
     const { developers } = this.state;
+
     return (
 
       
 
+      
       <React.Fragment>
 
    
@@ -46,15 +52,16 @@ class App extends React.Component {
         
 
         <Router>
+        
+      <AuthProvider>
         <Nav>
         </Nav>
-      <AuthProvider>
         <Switch>
-          <Route exact path="/" component ={Dashboard}/>
           <Route path ="/Login" component ={Login}/>
-          <Route path ="/Profile" component ={profile}/>
+          <Route path ="/Profile" component ={Dashboard}/>
           <Route path ="/Signup" component ={Acc}/>
           <Route path ="/Account" component ={profile}/>
+          <Route path ="/update-profile" component ={UpdateProfile}/>
         </Switch>
       </AuthProvider>
 

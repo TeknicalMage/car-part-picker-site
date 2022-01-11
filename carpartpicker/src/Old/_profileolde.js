@@ -169,9 +169,6 @@ class profile extends React.Component {
                 <button type="submit" className="btn btn-primary">
                   Save
                 </button>
-
-
-                
               </form>
             </div>
           </div>

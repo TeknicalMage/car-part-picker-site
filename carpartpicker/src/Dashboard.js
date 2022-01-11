@@ -8,24 +8,41 @@ export default function Dashboard() {
   const { currentUser, logout } = useAuth()
   const history = useHistory()
 
+ 
+
+  
+
   async function handleLogout() {
     setError("")
 
     try {
       await logout()
-      history.push("/login")
+      history.push("/")
     } catch {
       setError("Failed to log out")
     }
   }
 
-  return (
-    <>
+    if (currentUser == null) {
+    return(
+      <>
+      <Card>
+        <Card.Body>
+          <h2 className="text-center mb-4">Successfully Logged Out</h2>
+        </Card.Body>
+        </Card>
+      </>
+    )
+    } else if(currentUser.emailVerified) {
+
+    return (
+      <>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
+          {error && <Alert Sariant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
+          <strong>ALL INFO:</strong> {currentUser.photoURL}
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile
           </Link>
@@ -36,6 +53,22 @@ export default function Dashboard() {
           Log Out
         </Button>
       </div>
-    </>
-  )
-}
+      </>
+    )
+    } else {
+      return(
+        <Card>
+         <p>Account Not verified</p> 
+         <Button variant="link" onClick={handleLogout}>
+          Log Out
+        </Button>
+        </Card>
+
+        
+        
+      )
+    }
+  }
+
+  
+  

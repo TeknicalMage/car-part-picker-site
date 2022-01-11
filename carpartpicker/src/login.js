@@ -6,10 +6,17 @@ import { Link, useHistory } from "react-router-dom"
 export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
-  const {currentUser, login } = useAuth()
+  const {currentUser, login, logout } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+
+  //
+  if(currentUser != null && !currentUser.emailVerified) {
+    logout()
+    setTimeout(alert("Please Check email for verification"), 2);
+    history.push("/")
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
