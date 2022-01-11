@@ -45,53 +45,36 @@ class App extends React.Component {
 
 
 
-            <
-            React.Fragment >
+          <React.Fragment>
 
+   
 
+        
 
-
-
-            <
-            Router >
-
-            <
-            AuthProvider >
-            <
-            Nav >
-            <
-            /Nav> <
-            Switch >
-            <
-            Route path = "/Login"
-            component = { Login }
-            /> <
-            Route path = "/Profile"
-            component = { Dashboard }
-            /> <
-            Route path = "/Signup"
-            component = { Acc }
-            /> <
-            Route path = "/Account"
-            component = { profile }
-            /> <
-            Route path = "/update-profile"
-            component = { UpdateProfile }
-            /> < /
-            Switch > <
-            /AuthProvider>
-
-            <
-            /Router>
-
-
-
-
-
-            <
-            /React.Fragment>
-        );
+          <Router>
+          
+        <AuthProvider>
+          <Nav>
+          </Nav>
+          <Switch>
+            <Route path ="/Login" component ={Login}/>
+            <Route path ="/Profile" component ={Dashboard}/>
+            <Route path ="/Signup" component ={Acc}/>
+            <Route path ="/Account" component ={profile}/>
+            <Route path ="/update-profile" component ={UpdateProfile}/>
+            <Route path ="/Carmodder" component ={carmodder}/>
+          </Switch>
+        </AuthProvider>
+  
+          </Router>
+  
+  
+  
+  
+          
+        </React.Fragment>
+      );
     }
-}
-
-export default App;
+  }
+  
+  export default App;
