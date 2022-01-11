@@ -78,7 +78,7 @@ else {
             <li className=""> </li>
           </Link>
           <Link to='/Homepage' className="grid-item_e" style={{ textDecoration: 'none' }}>
-            <li className=""></li>
+            <li className="">Carmodder</li>
           </Link>
           <Link to='/Profile' className="grid-item_r" style={{ textDecoration: 'none' }}>
             <li className="">Profile</li>
