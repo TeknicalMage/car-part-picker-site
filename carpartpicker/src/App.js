@@ -12,6 +12,7 @@ import Signup from "./signup";
 import { AuthProvider } from "./contexts/AuthContext";
 import Dashboard from "./Dashboard";
 import UpdateProfile from "./UpdateProfile"
+import $ from "jquery";
 
 
 
@@ -34,6 +35,7 @@ class App extends React.Component {
 
 
     }
+
 
 
 
@@ -62,7 +64,7 @@ class App extends React.Component {
             <Route path ="/Signup" component ={Acc}/>
             <Route path ="/Account" component ={profile}/>
             <Route path ="/update-profile" component ={UpdateProfile}/>
-            <Route path ="/Carmodder" component ={carmodder}/>
+            {/*<Route path ="/Carmodder" component ={carmodder}/>*/}
           </Switch>
         </AuthProvider>
   
@@ -74,6 +76,39 @@ class App extends React.Component {
           
         </React.Fragment>
       );
+    }
+
+    componentDidMount() {
+        // console.log("Works");
+        // $('.toggle-button').on('hover', function() {
+        //     console.log("Works1");
+        //     $('.left-sidebar').toggleClass('minimize');
+        // });
+        //
+        // $('.user-profile').on('click', function() {
+        //     console.log("Works1");
+        //     $('.left-sidebar').toggleClass('minimize');
+        // });
+        //
+        // $('.close-chat-btn').on('click', function() {
+        //     console.log("Works1");
+        //     $('.direct-messaging ').addClass('minimize');
+        // });
+        //
+        // $('.open-chat-btn').on('click', function() {
+        //     console.log("Works1");
+        //     $('.direct-messaging ').toggleClass('minimize');
+        // });
+        //
+        // $('.open-music-btn').on('click', function() {
+        //     console.log("Works1");
+        //     $('.music-player').toggleClass('show');
+        // });
+        //
+        // $('.open-timer-btn').on('click', function() {
+        //     console.log("Works1");
+        //     $('.timer-display').toggleClass('show');
+        // });
     }
   }
   
