@@ -13,5 +13,9 @@ Site
 2. Site Design 
 
 - Features
-1. Vehicle Part Picker
-2. Profile Vehicle Show (wtf does this actually mean)
+1. Vehicle Part Picker - Breakout into #4 
+2. Profile Vehicle Show 
+3. Chat Between users
+4. User Submitted Parts
+
+
