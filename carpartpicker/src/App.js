@@ -7,6 +7,8 @@ import Nav from "./Nav";
 import Login from "./Login"
 import profile from "./profile"
 import Acc from "./AccPage"
+
+
 //Sign up Component
 import Signup from "./signup";
 import { AuthProvider } from "./contexts/AuthContext";

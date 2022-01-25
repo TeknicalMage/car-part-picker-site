@@ -13,25 +13,116 @@ import {BsFillChatDotsFill} from "react-icons/all";
 import {ImProfile} from "react-icons/all";
 import {ImMenu} from "react-icons/all";
 import Camera from "./Camera";
-import {getDownloadURL, uploadBytes} from "firebase/storage";
-import storageRef from "./firebase";
-import ref from "firebase/storage"
-import 'firebase/storage';
+import storage from "./firebase";
 
+import { ref, uploadBytes } from "firebase/storage"
+import firebase from "firebase/app";
+import "firebase/auth"
+import {getDoc, updateDoc} from "firebase/firestore"
+
+
+// Get the default bucket from a custom firebase.app.App
 export default function Dashboard() {
     const [error, setError] = useState("")
     const [img, setImg] = useState("")
+    const [url, setUrl] = useState("");
+    const [user, setUser] = useState("");
+    const db = firebase.firestore();
+    var urlBased = null;
     useEffect(() => {
+        db.collection("users").doc(currentUser.uid).get().then((docSnap) => {
+            if (docSnap.exists) {
+                setUser(docSnap.data());
+            }
+        });
+        // firestore.getDoc(firestore.doc(firebase.db(), "users", auth.currentUser.uid)).then((docSnap) => {
+        //     if(docSnap.exists) {
+        //         setUser(docSnap.data());
+        //     }
+        // });
+
         if(img) {
-           const uploadImg = async () => {
-               console.log("Image Uploaded")
-               const imgRef = storageRef.child('avatar/${new Date().getTime()} - ${img.name}').put(img);
-               console.log(imgRef)
-           }
-           uploadImg()
+            const handleUpload = async () => {
+                const uploadTask = firebase.storage().ref(`images/${img.name}`).put(img);
+                var getLinkTask = firebase.storage().ref(`images/${img.name}`).getDownloadURL().then((url) => {
+
+                    // const xhr = new XMLHttpRequest();
+                    // xhr.responseType = 'blob';
+                    // xhr.onload = (event) => {
+                    //     const blob = xhr.response;
+                    // };
+                    // xhr.open('GET', url);
+                    // xhr.send();
+                    //
+                    // const img = document.getElementById('myimg');
+                    // img.setAttribute('src', url);
+                    urlBased = url;
+                    console.log(urlBased)
+                    document.getElementById("avatarImg").src="https://user-images.githubusercontent.com/52536103/78306268-40e17f00-7543-11ea-8e9f-fa588e399a4d.gif";
+
+                })
+                    .catch((error) => {
+                        console.log(error)
+                        console.log(urlBased)
+                    });
+                uploadTask.on(
+                    "state_changed",
+                    async snapshot => {
+                        const progress = Math.round(
+                            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                        );
+                        // setProgress(progress);
+
+                    },
+                    error => {
+                        console.log(error);
+                        getLinkTask = firebase.storage().ref(`images/${img.name}`).getDownloadURL().then((url) => {
+
+                            // const xhr = new XMLHttpRequest();
+                            // xhr.responseType = 'blob';
+                            // xhr.onload = (event) => {
+                            //     const blob = xhr.response;
+                            // };
+                            // xhr.open('GET', url);
+                            // xhr.send();
+                            //
+                            // const img = document.getElementById('myimg');
+                            // img.setAttribute('src', url);
+                            console.log(urlBased)
+                            urlBased = url;
+                        })
+                            .catch((error) => {
+                                console.log(error)
+                                console.log(urlBased)
+                            });
+                    },
+                    async () => {
+                        firebase.storage()
+                            .ref("images")
+                            .child(img.name)
+                            .getDownloadURL()
+                            .then(async url => {
+                                await db.collection("users").doc(currentUser.uid).set({
+                                    avatar: url,
+                                    avatarPath: `images/${img.name}`
+                                })
+                                document.getElementById("avatarImg").src=url;
+                                console.log(url);
+                            });
+
+                    }
+                );
+
+                console.log(urlBased)
+                setImg("");
+
+
+            };
+           handleUpload()
         }
-    }, [img])
+    }, [img]);
     console.log(img);
+
     const {currentUser, logout} = useAuth()
     const history = useHistory()
 
@@ -95,7 +186,8 @@ export default function Dashboard() {
             </>
         )
     } else if (currentUser.emailVerified) {
-        return (
+        console.log(user.avatar);
+        return user ? (
             <>
                 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
                 <script noModule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -105,8 +197,8 @@ export default function Dashboard() {
                             <div className="user-profile" onClick={userProfile}>
                                 <div className="user-background"></div>
                                 <div className="img_container user-image">
-                                        <img src="https://avatarfiles.alphacoders.com/262/thumb-1920-262989.png"
-                                             alt="avatar"/>
+                                        <img src= {user.avatar || "https://avatarfiles.alphacoders.com/262/thumb-1920-262989.png" }
+                                             alt="avatar" id = "avatarImg"/>
                                         <div className="overlay">
                                             <div id="cameraID">
                                                 <label htmlFor="photo" display="block" margin="auto" text-align="center"
@@ -271,7 +363,7 @@ export default function Dashboard() {
                     </div>
                 </div>
             </>
-        )
+        ) : null;
 
     } else {
         return (
