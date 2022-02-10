@@ -12,7 +12,10 @@ import Signup from "./signup";
 import { AuthProvider } from "./contexts/AuthContext";
 import Dashboard from "./Dashboard";
 import UpdateProfile from "./UpdateProfile"
-
+import Carmodder from "./Carmodder"
+import thing from "./thing"
+import partim from "./partim"
+import fourm from "./Fourm_Header"
 
 
 
@@ -62,7 +65,10 @@ class App extends React.Component {
             <Route path ="/Signup" component ={Acc}/>
             <Route path ="/Account" component ={profile}/>
             <Route path ="/update-profile" component ={UpdateProfile}/>
-            <Route path ="/Carmodder" component ={carmodder}/>
+            <Route path ="/Carmodder" component ={Carmodder}/>
+            <Route path ="/thing" component ={thing}/>
+            <Route path ="/partim" component ={partim}/>
+            <Route path ="/fourm" component ={fourm}/>
           </Switch>
         </AuthProvider>
   
